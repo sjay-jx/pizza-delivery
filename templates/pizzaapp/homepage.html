@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand">Welcome</a>
+<!--   <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form> -->
+  	<a class="btn btn-success" href = "/userlogin/">Login</a>
+
+</nav>
+<div class="container-fluid" style="position: relative;background-size: cover; height: 598px;background-image: url({% static 'img/pizza.png' %});">
+	<div style="position: absolute; top: 50px ; right: 20px; padding: 40px; width: 400px; height: 330px; background-color:#FF8C00;">
+		<h1 style="text-align: center; color: white">Sign Up</h1>
+		<form method="post" action="/signup/">
+			{% csrf_token %}
+			<input class="form-control" placeholder="Username" type="text" name="username" style="margin-bottom:10px;">
+			<input type="password" class="form-control" placeholder="password" name="password" style="margin-bottom: 10px;">
+			<input style="margin-bottom: 10px" type="text" max="10" class="form-control" placeholder="Phone No." name="phoneno">
+			<input style="display: block; margin: auto; margin-top: 20px;" class = "btn-success btn" type="submit" name="" value="Sign Up">
+		</form>
+
+		{% for message in messages %}
+<p style="text-align: center; color: white">{{message}}</p>
+{% endfor %}
+	</div>
+</div>
+
+
+{% endblock %}
